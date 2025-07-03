@@ -1,11 +1,6 @@
-<script setup lang="ts">
-import EventCard from '../components/EventCard.vue'
-import type { Event } from '../types'
-import { ref } from 'vue'
-
-const events = ref<Event[]>([
+[
   {
-    id: 5829101,
+    id: 5928101,
     category: 'animal welfare',
     title: 'Cat Adoption Day',
     description: 'Find your new feline friend at this event.',
@@ -37,11 +32,4 @@ const events = ref<Event[]>([
     petsAllowed: false,
     organizer: 'Carey Wales'
   }
-])
-</script>
-
-<template>
-  <div class="home">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
-  </div>
-</template>
+]
