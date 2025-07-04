@@ -4,15 +4,15 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div id="layout">
-    <header>
-      <div class="wrapper">
-        <nav>
+  <header>
+    <div class="wrapper">
+      <nav>
           <RouterLink to="/">Home</RouterLink> |
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      </div>
-    </header>
-    <RouterView />
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
+  </header>
+  <RouterView />
   </div>
 </template>
 
@@ -42,7 +42,7 @@ nav a:first-of-type {
 }
 nav a.router-link-exact-active {
   color: #42b983;
-}
+  }
 h2 {
   font-size: 20px;
 }

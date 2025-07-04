@@ -14,6 +14,8 @@ dist-ssr
 coverage
 *.local
 
+vue-lab2db/
+
 /cypress/videos/
 /cypress/screenshots/
 
