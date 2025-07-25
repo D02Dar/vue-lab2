@@ -23,7 +23,7 @@
 import EventCard from '../components/EventCard.vue'
 import CategoryOrganizer from '../components/CategoryOrganizer.vue'
 import { type Event } from '@/types'
-import { ref, watchEffect, computed } from 'vue'
+import { ref, watchEffect, computed, watch } from 'vue'
 import EventService from '../services/EventService'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -39,7 +39,6 @@ const hasNextPage = computed(() => {
 })
 
 watchEffect(() => {
-  events.value = null
   EventService.getEvents(perPageLocal.value, page.value)
     .then((response) => {
       events.value = response.data
@@ -50,9 +49,8 @@ watchEffect(() => {
     })
 })
 
-watchEffect(() => {
-  // 当 perPageLocal 变化时，跳转到第一页
-  router.replace({ name: 'event-list-view', query: { page: 1, perPage: perPageLocal.value } })
+watch(perPageLocal, (newVal) => {
+  router.push({ name: 'event-list-view', query: { page: 1, perPage: newVal } })
 })
 </script>
 
