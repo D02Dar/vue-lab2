@@ -8,4 +8,8 @@ export interface Event {
   time: string
   petsAllowed: boolean
   organizer: string
+}
+
+export interface MessageState {
+  message: string
 } 
