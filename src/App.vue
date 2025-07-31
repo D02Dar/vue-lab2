@@ -7,16 +7,16 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <div id="layout">
+  <div id="layout" class="text-center font-sans text-gray-700 antialias">
     <header>
       <div id="flashMessage" v-if="message">
         <h4>{{ message }}</h4>
       </div>
       <div class="wrapper">
-        <nav>
-          <RouterLink to="/">Home</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink to="/students">Student</RouterLink>
+        <nav class="bg-white shadow-lg rounded-lg p-4">
+          <RouterLink to="/" class="text-green-600 hover:text-green-800 font-medium px-4 py-2 rounded-md hover:bg-green-50 transition-colors">Home</RouterLink>
+          <RouterLink :to="{ name: 'about' }" class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors">About</RouterLink>
+          <RouterLink to="/students" class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors">Student</RouterLink>
         </nav>
       </div>
     </header>
@@ -26,12 +26,7 @@ const { message } = storeToRefs(store)
 
 <style>
 #layout {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   margin-top: 2rem;
-  color: #2c3e50;
 }
 nav {
   width: 100%;
@@ -43,7 +38,6 @@ nav a {
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
   font-weight: bold;
-  color: #2c3e50;
 }
 nav a:first-of-type {
   border: 0;
