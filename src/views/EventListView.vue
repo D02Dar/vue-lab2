@@ -11,7 +11,7 @@
       events per page
     </label>
   </div>
-  <div class="events">
+  <div class="flex flex-col items-center">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <CategoryOrganizer v-for="event in events" :key="'catorg-' + event.id" :event="event" />
   </div>
@@ -65,11 +65,6 @@ watch(perPageLocal, (newVal) => {
 <style scoped>
 .page-size-select {
   margin-bottom: 12px;
-}
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .pagination {
   display: flex;
