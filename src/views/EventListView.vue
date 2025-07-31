@@ -1,8 +1,8 @@
 <template>
   <h1>Events For Good</h1>
-  <div class="page-size-select">
-    <label>Page size:
-      <select v-model.number="perPageLocal">
+  <div class="mb-3">
+    <label class="text-gray-700">Page size:
+      <select v-model.number="perPageLocal" class="ml-2 px-2 py-1 border border-gray-300 rounded">
         <option :value="2">2</option>
         <option :value="3">3</option>
         <option :value="5">5</option>
@@ -15,8 +15,10 @@
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <CategoryOrganizer v-for="event in events" :key="'catorg-' + event.id" :event="event" />
   </div>
-  <RouterLink :to="{ name: 'event-list-view', query: { page: page - 1, perPage: perPageLocal } }" rel="prev" v-if="page != 1">&lt;&lt; Prev Page</RouterLink>
-  <RouterLink :to="{ name: 'event-list-view', query: { page: page + 1, perPage: perPageLocal } }" rel="next" v-if="hasNextPage">Next Page &gt;&gt;</RouterLink>
+  <div class="flex w-72 mt-4">
+    <RouterLink :to="{ name: 'event-list-view', query: { page: page - 1, perPage: perPageLocal } }" rel="prev" v-if="page != 1" class="flex-1 text-center text-gray-700 py-2 rounded transition-colors hover:bg-gray-100 no-underline">&lt;&lt; Prev Page</RouterLink>
+    <RouterLink :to="{ name: 'event-list-view', query: { page: page + 1, perPage: perPageLocal } }" rel="next" v-if="hasNextPage" class="flex-1 text-center text-gray-700 py-2 rounded transition-colors hover:bg-gray-100 no-underline">Next Page &gt;&gt;</RouterLink>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -63,29 +65,5 @@ watch(perPageLocal, (newVal) => {
 </script>
 
 <style scoped>
-.page-size-select {
-  margin-bottom: 12px;
-}
-.pagination {
-  display: flex;
-  width: 290px;
-  margin-top: 16px;
-}
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2e3e50;
-  padding: 8px 0;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-.pagination a:hover {
-  background: #f0f0f0;
-}
-#page-prev {
-  text-align: left;
-}
-#page-next {
-  text-align: right;
-}
+/* 所有样式现在使用 Tailwind CSS 类名 */
 </style> 
