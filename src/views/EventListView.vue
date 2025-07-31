@@ -27,12 +27,20 @@ import { ref, watchEffect, computed, watch } from 'vue'
 import EventService from '../services/EventService'
 import { useRouter, useRoute } from 'vue-router'
 
+interface Props {
+  page?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  page: 1
+})
+
 const router = useRouter()
 const route = useRoute()
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const perPageLocal = ref(Number(route.query.perPage) || 2)
-const page = computed(() => Number(route.query.page) || 1)
+const page = computed(() => props.page || Number(route.query.page) || 1)
 const hasNextPage = computed(() => {
   const totalPages = Math.ceil(totalEvents.value / perPageLocal.value)
   return page.value < totalPages
